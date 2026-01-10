@@ -2,7 +2,7 @@
 
 <script src={{ (resources.Get "background/particles.min.js").Permalink }}></script>
 <script>
-  particlesJS.load('particles-js', {{ (resources.Get ,"background/particlesjs-config.json").Permalink }}, function() {
+  particlesJS.load('particles-js', {{ (resources.Get "background/particlesjs-config.json").RelPermalink }}, function() {
     console.log('particles.js loaded - callback');
   });
 </script>
