@@ -110,9 +110,9 @@ params:
             adminLabel:
 
         utterances:
-            repo: GZMB_GameDev/Blog
+            repo: GZMB-GameDev/Blog
             issueTerm: pathname
-            label:
+            label: comments
 
         beaudar:
             repo:
@@ -289,10 +289,4 @@ markup:
         tabWidth: 4
 
 
-<script src="https://utteranc.es/client.js"
-        repo="GZMB_GameDev/Blog"
-        issue-term="pathname"
-        theme="github-light"
-        crossorigin="anonymous"
-        async>
-</script>
+
