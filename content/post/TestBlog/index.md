@@ -10,11 +10,4 @@ This is a **test** post
 这是一个**测试**帖子
 
 
-<script src="https://utteranc.es/client.js"
-        repo="[ENTER REPO HERE]"
-        issue-term="title"
-        label="Comment"
-        theme="github-light"
-        crossorigin="anonymous"
-        async>
-</script>
+
