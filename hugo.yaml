@@ -289,7 +289,7 @@ markup:
         tabWidth: 4
 
 
-<script src="https://utteranc.es/client.js"
+<script src="utteranc.es/client.js"
         repo="GZMB-GameDev/Blog"
         issue-term="title"
         label="Comment"
