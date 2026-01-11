@@ -1,20 +1,118 @@
-{{ if .Site.IsServer }}
-<!-- 开发环境不添加严格头部 -->
-{{ else }}
-<!-- 生产环境安全头部 -->
-<meta http-equiv="Content-Security-Policy" content="
-    default-src 'self';
-    script-src 'self' https://utteranc.es 'unsafe-inline';
-    style-src 'self' https://utteranc.es 'unsafe-inline';
-    img-src 'self' data: https:;
-    font-src 'self';
-    connect-src 'self' https://api.github.com;
-    frame-src https://utteranc.es;
-    frame-ancestors 'self';
-">
+{{ if .Site.Params.giscus.enable }}
+{{ $giscus := .Site.Params.giscus }}
 
-<!-- 其他安全头部 -->
-<meta http-equiv="X-Content-Type-Options" content="nosniff">
-<meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
-<meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
+<div class="giscus-comments" id="giscus-container">
+    <!-- 加载提示 -->
+    <div class="giscus-loading" id="giscus-loading">
+        <p>正在加载评论系统...</p>
+    </div>
+</div>
+
+<script>
+(function() {
+    // 配置参数
+    const config = {
+        repo: '{{ $giscus.repo }}',
+        repoId: '{{ $giscus.repoId }}',
+        category: '{{ $giscus.category }}',
+        categoryId: '{{ $giscus.categoryId }}',
+        mapping: '{{ $giscus.mapping | default "pathname" }}',
+        strict: '{{ $giscus.strict | default "0" }}',
+        reactionsEnabled: '{{ $giscus.reactionsEnabled | default "1" }}',
+        emitMetadata: '{{ $giscus.emitMetadata | default "0" }}',
+        inputPosition: '{{ $giscus.inputPosition | default "bottom" }}',
+        theme: '{{ $giscus.theme | default "light" }}',
+        lang: '{{ $giscus.lang | default "zh-CN" }}',
+        crossorigin: '{{ $giscus.crossorigin | default "anonymous" }}'
+    };
+    
+    // 验证必要参数
+    if (!config.repoId || !config.categoryId) {
+        console.error('Giscus 配置不完整，请检查 repoId 和 categoryId');
+        document.getElementById('giscus-loading').innerHTML = 
+            '<p style="color: #e74c3c;">评论系统配置不完整，请检查设置。</p>';
+        return;
+    }
+    
+    // 动态加载 Giscus
+    function loadGiscus() {
+        const loadingEl = document.getElementById('giscus-loading');
+        if (loadingEl) loadingEl.style.display = 'none';
+        
+        const script = document.createElement('script');
+        script.src = 'https://giscus.app/client.js';
+        script.setAttribute('data-repo', config.repo);
+        script.setAttribute('data-repo-id', config.repoId);
+        script.setAttribute('data-category', config.category);
+        script.setAttribute('data-category-id', config.categoryId);
+        script.setAttribute('data-mapping', config.mapping);
+        script.setAttribute('data-strict', config.strict);
+        script.setAttribute('data-reactions-enabled', config.reactionsEnabled);
+        script.setAttribute('data-emit-metadata', config.emitMetadata);
+        script.setAttribute('data-input-position', config.inputPosition);
+        script.setAttribute('data-theme', config.theme);
+        script.setAttribute('data-lang', config.lang);
+        script.setAttribute('crossorigin', config.crossorigin);
+        script.async = true;
+        
+        // 错误处理
+        script.onerror = function() {
+            const container = document.getElementById('giscus-container');
+            if (container) {
+                container.innerHTML = `
+                    <div class="giscus-error" style="padding: 20px; text-align: center; color: #666;">
+                        <p>评论加载失败，请刷新重试</p>
+                        <p><small>或检查 <a href="https://github.com/${config.repo}/discussions" target="_blank">GitHub Discussions</a></small></p>
+                    </div>
+                `;
+            }
+        };
+        
+        // 添加到页面
+        const container = document.getElementById('giscus-container');
+        if (container) {
+            container.appendChild(script);
+        }
+    }
+    
+    // 页面加载后执行
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', loadGiscus);
+    } else {
+        loadGiscus();
+    }
+})();
+</script>
+
+<style>
+.giscus-comments {
+    margin: 3rem 0;
+    padding-top: 2rem;
+    border-top: 1px solid #eaecef;
+    min-height: 200px;
+}
+
+.giscus-loading {
+    text-align: center;
+    padding: 40px;
+    color: #666;
+    font-style: italic;
+}
+
+.giscus-comments .giscus-frame {
+    width: 100%;
+    border: none;
+}
+
+/* 暗色主题适配 */
+@media (prefers-color-scheme: dark) {
+    .giscus-comments {
+        border-top-color: #2d333b;
+    }
+    
+    :root {
+        color-scheme: light dark;
+    }
+}
+</style>
 {{ end }}
