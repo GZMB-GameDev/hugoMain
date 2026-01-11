@@ -287,3 +287,12 @@ markup:
         lineNos: true
         lineNumbersInTable: true
         tabWidth: 4
+
+
+<script src="https://utteranc.es/client.js"
+        repo="GZMB_GameDev/Blog"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
