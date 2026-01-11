@@ -111,8 +111,8 @@ params:
 
         utterances:
             repo: "GZMB-GameDev/Blog"
-            issueTerm: pathname
-            label: comments
+            issueTerm: "title"
+            label: "Comment"
 
         beaudar:
             repo:
@@ -290,11 +290,11 @@ markup:
 
 
 <script src="https://utteranc.es/client.js"
-        repo= "GZMB-GameDev/Blog"
-        issue-term= "title"
-        label= "Comment"
-        theme= "github-light"
-        crossorigin= "anonymous"
+        repo="GZMB-GameDev/Blog"
+        issue-term="title"
+        label="Comment"
+        theme="github-light"
+        crossorigin="anonymous"
         async>
 </script>
 
