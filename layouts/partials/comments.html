@@ -1,51 +1,20 @@
-{{ if .Site.Params.utterances.enable }}
-{{ $repo := .Site.Params.utterances.repo }}
-{{ $theme := .Site.Params.utterances.theme | default "github-light" }}
-{{ $issueTerm := .Site.Params.utterances.issueTerm | default "pathname" }}
+{{ if .Site.IsServer }}
+<!-- 开发环境不添加严格头部 -->
+{{ else }}
+<!-- 生产环境安全头部 -->
+<meta http-equiv="Content-Security-Policy" content="
+    default-src 'self';
+    script-src 'self' https://utteranc.es 'unsafe-inline';
+    style-src 'self' https://utteranc.es 'unsafe-inline';
+    img-src 'self' data: https:;
+    font-src 'self';
+    connect-src 'self' https://api.github.com;
+    frame-src https://utteranc.es;
+    frame-ancestors 'self';
+">
 
-<div class="utterances-wrapper">
-    <h3>💬 评论</h3>
-    
-    <!-- 使用 iframe 绕过 CSP 限制 -->
-    <iframe 
-        id="utterances-iframe"
-        src="about:blank"
-        style="width:100%; height:600px; border:none; overflow:hidden;"
-        title="GitHub Issues Comments"
-        loading="lazy"
-        sandbox="allow-scripts allow-same-origin allow-popups"
-    ></iframe>
-    
-    <script>
-    (function() {
-        // 等待页面完全加载
-        window.addEventListener('load', function() {
-            const iframe = document.getElementById('utterances-iframe');
-            if (!iframe) return;
-            
-            // 构建 Utterances URL
-            const currentPath = window.location.pathname;
-            const utterancesUrl = `https://utteranc.es/?repo={{ $repo }}&issue-term={{ $issueTerm }}&theme={{ $theme }}&url=${encodeURIComponent(window.location.href)}&pathname=${encodeURIComponent(currentPath)}`;
-            
-            // 设置 iframe 的 src
-            iframe.src = utterancesUrl;
-            
-            console.log('Utterances iframe URL:', utterancesUrl);
-        });
-    })();
-    </script>
-</div>
-
-<style>
-.utterances-wrapper {
-    margin: 2rem 0;
-    padding-top: 1rem;
-    border-top: 1px solid #eee;
-}
-
-.utterances-wrapper h3 {
-    margin-bottom: 1rem;
-    color: #333;
-}
-</style>
+<!-- 其他安全头部 -->
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+<meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
 {{ end }}
