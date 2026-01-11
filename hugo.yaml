@@ -110,8 +110,8 @@ params:
             adminLabel:
 
         utterances:
-            repo: "GZMB-GameDev/Blog"
-            issueTerm: "title"
+            repo: "gzmb-gamedev/blog"
+            issueTerm: "pathname"
             label: "Comment"
 
         beaudar:

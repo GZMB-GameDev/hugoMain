@@ -1,9 +1,17 @@
 {{ if .Site.Params.utterances.enable }}
-<script src="https://utteranc.es/client.js"
-        repo="{{ .Site.Params.utterances.repo }}"
-        issue-term="{{ .Site.Params.utterances.issueTerm }}"
-        theme="{{ .Site.Params.utterances.theme }}"
-        crossorigin="anonymous"
-        async>
+<div id="utterances-container"></div>
+<script>
+(function() {
+    const script = document.createElement('script');
+    script.src = 'https://utteranc.es/client.js';
+    script.setAttribute('repo', '{{ .Site.Params.utterances.repo }}');
+    script.setAttribute('issue-term', '{{ .Site.Params.utterances.issueTerm }}');
+    script.setAttribute('theme', '{{ .Site.Params.utterances.theme }}');
+    script.setAttribute('crossorigin', 'anonymous');
+    script.setAttribute('defer', true);  // 添加 defer
+    script.async = true;
+    
+    document.getElementById('utterances-container').appendChild(script);
+})();
 </script>
 {{ end }}
