@@ -110,7 +110,7 @@ params:
             adminLabel:
 
         utterances:
-            repo:
+            repo: GZMB_GameDev/Blog
             issueTerm: pathname
             label:
 
