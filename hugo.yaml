@@ -61,7 +61,7 @@ services:
         id:
 
 pagination:
-    pagerSize: 2 # Change the amount of post in one page
+    pagerSize: 5 # Change the amount of post in one page
 
 permalinks:
     post: /p/:slug/ 
@@ -137,7 +137,7 @@ params:
         waline:
             serverURL:
             lang:
-            pageview:
+            pageview: 
             emoji:
                 - https://unpkg.com/@waline/emojis@1.0.1/weibo
             requiredMeta:
