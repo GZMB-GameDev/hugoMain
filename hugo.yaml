@@ -28,29 +28,7 @@ languages:
             sidebar:
                 subtitle: 欢迎来到我的博客,Bilibili ID:鸽子面包不会游戏开发
 
-    zh-tw:
-        languageName: 正體中文
-        title: 演示站點
-        weight: 2
-        params:
-            sidebar:
-                subtitle: Welcome to my blog,Bilibili ID:鸽子面包不会游戏开发
-
-    ja:
-        languageName: 日本語
-        title: サンプルサイト
-        weight: 2
-        params:
-            sidebar:
-                subtitle: サンプル説明
-    ar:
-        languageName: عربي
-        languagedirection: rtl
-        title: موقع تجريبي
-        weight: 3
-        params:
-            sidebar:
-                subtitle: وصف تجريبي
+   
 
 services:
     # Change it to your Disqus shortname before using
@@ -72,7 +50,7 @@ params:
         - post
     featuredImageField: image
     rssFullContent: true
-    favicon: /favicon.ico # e.g.: favicon placed in `static/favicon.ico` of your site folder, then set this field to `/favicon.ico` (`/` is necessary)
+    favicon: ./favicon.ico # e.g.: favicon placed in `static/favicon.ico` of your site folder, then set this field to `/favicon.ico` (`/` is necessary)
 
     footer:
         since: 2020
