@@ -267,6 +267,10 @@ markup:
         lineNumbersInTable: true
         tabWidth: 4
 
+    disableKinds:
+    - taxonomy
+    - term
+
 
 
 
