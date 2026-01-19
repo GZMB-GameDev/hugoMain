@@ -1,0 +1,109 @@
+/* Place your custom SCSS in HUGO_SITE_FOLDER/assets/scss/custom.scss */
+.article-title a {
+    display: inline-block !important;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    transform-origin: left center !important;
+    text-decoration: none !important;
+
+    position: relative;
+    
+    
+}
+.article-title a:hover {
+    transform: scale(1.07) !important;
+    //color: var(--primary-color, #0366d6) !important;
+}
+
+.article-title a::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -2px;
+    width: 0;
+    height: 2px;
+    background-color: #000000;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.article-title a:hover::after {
+    width: 100%;
+    left: 0;
+    transform: translateX(0);
+}
+
+/* 左侧导航菜单链接悬停下划线 */
+.sidebar .menu li a {
+    position: relative;
+    text-decoration: none !important;
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 0;
+    color: inherit;
+    transition: color 0.3s ease;
+}
+
+
+.sidebar .menu a{
+
+    display: inline-block;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    transform-origin: left center !important;
+    text-decoration: none !important;
+
+    position: relative;
+}
+
+.sidebar a:hover {
+    transform: scale(1.07) !important;
+    //color: var(--primary-color, #0366d6) !important;
+}
+
+/* 底部渐变边框入场效果 */
+/* 四边渐变边框（霓虹效果） */
+.left-sidebar .menu li a {
+    position: relative;
+    padding: 12px 20px;
+    margin: 8px 15px;
+    border-radius: 8px;
+    background: var(--bg-color, #fff);
+    z-index: 1;
+    transition: all 0.4s ease;
+}
+
+.left-sidebar .menu li a::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(
+        45deg,
+        #ff000075, #ff730075, #fffb0075, #48ff0075,
+        #00ffd575, #002bff75, #7a00ff75, #ff00c875, #ff000075
+    );
+    background-size: 400%;
+    border-radius: 10px;
+    z-index: -1;
+    opacity: 0;
+    filter: blur(5px);
+    transition: opacity 0.5s ease;
+    animation: gradient-border 20s linear infinite;
+}
+
+.left-sidebar .menu li a:hover::before {
+    opacity: 1;
+}
+
+.left-sidebar .menu li a:hover {
+    color: #fff;
+    transform: translateX(10px);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes gradient-border {
+    0% { background-position: 0 0; }
+    50% { background-position: 400% 0; }
+    100% { background-position: 0 0; }
+}
