@@ -10,9 +10,11 @@
     
 }
 .article-title a:hover {
-    transform: scale(1.07) !important;
+    transform: scale(1.07);
     //color: var(--primary-color, #0366d6) !important;
 }
+
+
 
 .article-title a::after {
     content: '';
@@ -33,7 +35,7 @@
 }
 
 /* 左侧导航菜单链接悬停下划线 */
-.sidebar .menu li a {
+.left-sidebar .menu li a {
     position: relative;
     text-decoration: none !important;
     display: inline-flex;
@@ -44,7 +46,7 @@
 }
 
 
-.sidebar .menu a{
+.left-sidebar .menu a{
 
     display: inline-block;
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
@@ -54,7 +56,7 @@
     position: relative;
 }
 
-.sidebar a:hover {
+.left-sidebar a:hover {
     transform: scale(1.07) !important;
     //color: var(--primary-color, #0366d6) !important;
 }
@@ -150,6 +152,57 @@
     0% { background-position: 0 0; }
     50% { background-position: 400% 0; }
     100% { background-position: 0 0; }
+}
+
+
+
+
+
+/* 主页文章卡片悬停放大 */
+
+/* 主页文章卡片悬停放大 */
+.article-list article,
+.post-list article {
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform-origin: center;
+    position: relative;
+    z-index: 1;
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--card-bg, #fff);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* 悬停时放大 */
+.article-list article:hover,
+.post-list article:hover {
+    transform: scale(1.05) translateY(-10px);
+    z-index: 100;
+    box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.15),
+        0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* 隐藏的简介区域 */
+.article-excerpt {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    padding: 0 20px;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    color: var(--text-secondary, #666);
+    line-height: 1.6;
+    font-size: 14px;
+}
+
+/* 悬停时显示简介 */
+.article-list article:hover .article-excerpt,
+.post-list article:hover .article-excerpt {
+    max-height: 100px;
+    opacity: 1;
+    padding: 15px 20px 20px;
+    margin-top: 10px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 

@@ -2,7 +2,7 @@
 author = "Hugo Authors"
 date = "2026-01-18"
 title = 'Volt Protocol Dev Journal 1'
-
+description = ''
 
 tags = [
     "Volt Protocol",
