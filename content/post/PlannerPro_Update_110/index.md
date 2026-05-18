@@ -6,10 +6,6 @@ tags = ["PlannerPro", "Development Journal"]
 categories = ["CP Project"]
 +++
 
-### 项目更名
-
-**>** 正式更名为 **PlannerPro**（原 IBTimeManagement），打造更专业的品牌形象
-
 ### 功能修复
 
 **>** 修复日期处理时区问题：解决任务无法在截止日期当天完成的问题<br>
